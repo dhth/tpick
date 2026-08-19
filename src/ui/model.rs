@@ -1,5 +1,7 @@
+use chrono::{DateTime, Utc};
+
 pub struct Model {
-    pub value: u8,
+    pub value: DateTime<Utc>,
     pub running: bool,
-    pub selection: Option<u8>,
+    pub selection: Option<DateTime<Utc>>,
 }

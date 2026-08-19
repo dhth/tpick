@@ -1,4 +1,6 @@
 use super::model::Model;
+use crate::format::TIMESTAMP_FORMAT;
+use chrono::Local;
 use crossterm::cursor::MoveToColumn;
 use crossterm::cursor::MoveUp;
 use crossterm::queue;
@@ -13,8 +15,8 @@ pub fn render(output: &mut impl Write, model: &Model, redraw: bool) -> std::io::
 
     queue!(
         output,
-        Print("j/k to adjust, enter to select, q to quit\r\n"),
-        Print(format!("{:<3}", model.value)),
+        Print("j/k ±1 min, J/K ±5 min, enter to select, q to quit\r\n"),
+        Print(model.value.with_timezone(&Local).format(TIMESTAMP_FORMAT),),
     )?;
     output.flush()
 }

@@ -1,10 +1,11 @@
 use super::model::Model;
 use super::{input, update, view};
+use chrono::{DateTime, Utc};
 use crossterm::event::{self, Event};
 use crossterm::terminal::{disable_raw_mode, enable_raw_mode};
 use std::io::Write;
 
-pub fn pick() -> anyhow::Result<Option<u8>> {
+pub fn pick() -> anyhow::Result<Option<DateTime<Utc>>> {
     enable_raw_mode()?;
 
     let mut stdout = std::io::stdout();
@@ -19,9 +20,9 @@ pub fn pick() -> anyhow::Result<Option<u8>> {
     Ok(selection)
 }
 
-fn run_loop(output: &mut impl Write) -> anyhow::Result<Option<u8>> {
+fn run_loop(output: &mut impl Write) -> anyhow::Result<Option<DateTime<Utc>>> {
     let mut model = Model {
-        value: 0,
+        value: Utc::now(),
         running: true,
         selection: None,
     };
