@@ -1,5 +1,5 @@
 pub enum Message {
-    Adjust(i8),
+    Adjust(i64),
     Submit,
     Quit,
 }
