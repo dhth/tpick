@@ -1,0 +1,30 @@
+[package]
+name = "tpick"
+version = "0.1.0-alpha.1"
+edition = "2024"
+authors = ["Dhruv Thakur"]
+repository = "https://github.com/dhth/tpick"
+description = "tpick is an interactive timestamp picker for the terminal"
+homepage = "https://github.com/dhth/tpick"
+license = "MIT"
+keywords = [
+    "cli",
+    "date-time",
+    "time",
+    "timestamp",
+]
+categories = [
+    "command-line-utilities",
+]
+exclude = [
+    ".github",
+    "AGENTS.md",
+    "CLAUDE.md",
+]
+
+[dependencies]
+crossterm = "0.29.0"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
